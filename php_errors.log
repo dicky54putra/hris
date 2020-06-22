@@ -1,0 +1,9 @@
+[14-Jun-2019 20:33:26 Asia/Jakarta] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 2101248 bytes) in /home/cvajm/public_html/cvajm/vendor/yiisoft/yii2-debug/src/LogTarget.php on line 67
+[14-Jun-2019 20:33:26 Asia/Jakarta] PHP Fatal error:  Uncaught yii\web\HeadersAlreadySentException: Headers already sent in /home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Response.php on line 414. in /home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/ErrorHandler.php(135): yii\web\Response->send()
+#2 /home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/ErrorHandler.php(262): yii\web\ErrorHandler->renderException(Object(yii\base\ErrorException))
+#3 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#4 {main}
+  thrown in /home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Response.php on line 366
