@@ -143,6 +143,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         [
                                             'attribute' => 'status_dua',
                                             'format' => 'html',
+                                            'filter'    => array(0 => "Menunggu", 1 => "Disetujui", 2 => "Cek Ulang"),
                                             'value' => function ($model) {
                                                 if ($model->status_dua == 1) {
                                                     return "<font color='green'><b></i>Disetujui &#10004;</i></b>";
@@ -156,15 +157,20 @@ $this->params['breadcrumbs'][] = $this->title;
                                         ],
                                         'no_lambung',
                                         // 'id_pesawat',
-                                        // 'fixediving',
-                                        [
-                                            'attribute' => 'fixediving',
-                                            'format'    => 'raw',
-                                            'filter'    => array(0 => "Fixediving", 1 => "Rotary Wing"),
-                                            'value'     => function ($model) {
-                                                return $model->fixediving == 0 ? "Fixediving" : "Rotary Wing";
-                                            }
-                                        ],
+                                        'fixediving',
+                                        // [
+                                        //     'attribute' => 'fixediving',
+                                        //     'format'    => 'raw',
+                                        //     'filter'    => array(0 => "Fixediving", 1 => "Rotary Wing"),
+                                        //     'value'     => function ($model) {
+                                        //         // return $model->fixediving == 0 ? "Fixediving" : "Rotary Wing";
+                                        //         if ($model->fixediving == 0) {
+                                        //             return "Fixediving";
+                                        //         } else {
+                                        //             return "Rotary Wing";
+                                        //         }
+                                        //     }
+                                        // ],
                                         'tanggal',
                                         // 'kedudukan',
                                         [

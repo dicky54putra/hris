@@ -18,7 +18,7 @@ class LambungSearch extends Lambung
     {
         return [
             [['id_lambung', 'id_pesawat', 'harla_yad', 'harla_lalu'], 'integer'],
-            [['no_lambung', 'tanggal', 'status', 'fixediving', 'hasil', 'kedudukan', 'permasalahan', 'aksi', 'blade', 'warranty', 'selesai_warranty', 'crew', 'operasi', 'id_login', 'posisi', 'jenis_operasi', 'keterangan_umum', 'slu', 'blade', 'tanggal_temuan'], 'safe'],
+            [['no_lambung', 'tanggal', 'status', 'status_dua', 'fixediving', 'hasil', 'kedudukan', 'permasalahan', 'aksi', 'blade', 'warranty', 'selesai_warranty', 'crew', 'operasi', 'id_login', 'posisi', 'jenis_operasi', 'keterangan_umum', 'slu', 'blade', 'tanggal_temuan'], 'safe'],
             [['jt_pesud', 'jp', 'jt_total', 'jt_jatah'], 'number'],
         ];
     }
@@ -129,6 +129,7 @@ class LambungSearch extends Lambung
 
         $query->andFilterWhere(['like', 'no_lambung', $this->no_lambung])
             ->andFilterWhere(['like', 'status', $this->status])
+            ->andFilterWhere(['like', 'status_dua', $this->status_dua])
             ->andFilterWhere(['like', 'permasalahan', $this->permasalahan])
             ->andFilterWhere(['like', 'aksi', $this->aksi])
             ->andFilterWhere(['like', 'login.nama', $this->id_login])

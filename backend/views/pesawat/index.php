@@ -74,13 +74,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'tipe_pesawat',
                 [
                     'label' => 'Status Lambung',
-                    'format' => 'html',
+                    'format' => 'raw',
                     'value' => function ($model) {
                         $cek = Lambung::find()->where(['id_pesawat' => $model->id_pesawat])->andWhere(['status_dua' => 0])->count();
                         if ($cek == 1) {
-                            return "menunggu";
+                            return "<span class='label label-danger'>Menunggu</span>";
                         } else {
-                            return "siap";
+                            return "<span class='label label-success'>Siap</span>";
                         }
                         // return $cek;
                     }
