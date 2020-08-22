@@ -33,7 +33,8 @@ $fieldOptions2 = [
         <!-- <img src="images/header_cito.jpg" width="320"><br><br> -->
 
         <div class="row" align="center">
-            <h2><b>Data Pesawat AL Juanda</b></h2>
+            <p><b>SISTEM INFORMASI MANAJEMEN SUMBER DAYA MANUSIA (HRIS) BERBASIS WEB</b></p>
+            <p>PT WADJA KARYA DUNIA</p>
         </div>
         <br>
 
@@ -54,6 +55,9 @@ $fieldOptions2 = [
             <!-- /.col -->
             <div class="col-xs-4">
                 <?= Html::submitButton('Sign in', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
+            </div>
+            <div class="col-xs-6 pull-right">
+                <?= Html::a('Login Karyawan', ['login-karyawan'], ['class' => 'btn btn-success btn-block btn-flat']) ?>
             </div>
             <!-- /.col -->
         </div>

@@ -19,15 +19,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="login-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); 
-    ?>
-
-    <p>
-        <?= Html::a('Buat Login', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -65,7 +56,8 @@ $this->params['breadcrumbs'][] = $this->title;
         //'showPageSummary' => $pageSummary,
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
-            'heading' => '',
+            'heading' => '<h2 class="panel-title"><i class="fa fa-sign-in-alt"></i> Data User Login</h2>',
+            'before' => Html::a('<i class="glyphicon glyphicon-plus"></i> Create', ['create'], ['class' => 'btn btn-success']),
         ],
         'persistResize' => false,
         'toggleDataOptions' => ['minCount' => 100],
@@ -75,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'showPageSummary' => true,
             ],
             GridView::PDF => [
-                'filename' => 'Data_Pesawat',
+                'filename' => 'Data_Login',
                 'showPageSummary' => true,
             ]
 

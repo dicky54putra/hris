@@ -42,27 +42,29 @@
 				$tle = '';
 			}
 			if ($menu2) {
+				$c = 0;
 				//echo "1";
-				// $tle = Html::encode($this->title);
 				foreach ($menu2 as $data2) {
-					if (Html::encode($this->title == $data2->nama_menu)) {
-						$tle = 'active';
-					} else {
-						$tle = '';
-					}
+					// if (Html::encode($this->title == $data2->nama_menu)) {
+					// 	$tle = 'active';
+					// } else {
+					// 	$tle = '';
+					// }
 					array_push($items, array(
 						'label' => $data2->nama_menu,
 						'icon' => $data2->icon,
 						'url' => "index.php?r=" . $data2->url,
-						'options' => array('class' => $tle),
+						'options' => ['class' => $a = (Yii::$app->controller->id == $data2->url) ? 'active' : '',],
 					));
+					$b = ($a == 'active') ? 1 : 0;
+					$c += $b;
 				}
 				array_push($strMenu, array(
 					'label' => $data->nama_menu,
 					'icon' => $data->icon,
 					'url' => "index.php?r=" . $data->url,
 					'items'	=> $items,
-					'options' => array('class' => ''),
+					'options' => ['class' => ($c > 0) ? 'active' : '',],
 				));
 			} else {
 				//echo "2";
@@ -71,8 +73,7 @@
 					'icon' => $data->icon,
 					'url' => "index.php?r=" . $data->url,
 					'label' => $data->nama_menu,
-					'options' => array('class' => $tle),
-
+					'options' => ['class' => (Yii::$app->controller->id == $data->url) ? 'active' : '',],
 				));
 			}
 		}

@@ -70,7 +70,7 @@ class LoginController extends Controller
             exit;
         }
 
-        $hakakses = Systemrole::find()->where(['!=', 'id_system_role', 1])->orderBy("nama_role")->all();
+        $hakakses = Systemrole::find()->where(['!=', 'id_system_role', 1])->andWhere(['!=', 'id_system_role', 26])->orderBy("nama_role")->all();
 
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -119,8 +119,8 @@ class LoginController extends Controller
                     $simpan->save(false);
                 }
             }
-
             Yii::$app->session->setFlash("success", "Data hak akses berhasil disimpan.");
+            return $this->redirect(['view', 'id' => $id]);
         } else {
             Userrole::deleteAll(["id_login" => $id]);
         }
@@ -151,8 +151,19 @@ class LoginController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $model->foto = UploadedFile::getInstance($model, 'foto');
-            $model->save();
-            return $this->redirect(['view', 'id' => $model->id_login]);
+
+            $cek_uname = Login::find()->where(['username' => $model->username])->one();
+
+            if ($cek_uname) {
+                // echo "sudah ada";
+                Yii::$app->session->setFlash("danger", "Username sudah terdaftar!");
+                return $this->redirect(['create']);
+            } else {
+                // echo "sip";
+                $model->save();
+                return $this->redirect(['view', 'id' => $model->id_login]);
+            }
+            // die;
         }
 
         return $this->render('create', [

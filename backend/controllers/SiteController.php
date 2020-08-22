@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use backend\models\LoginForm;
+use backend\models\LoginKaryawanForm;
 use backend\models\Log;
 use backend\models\Login;
 use backend\models\Pesawat;
@@ -27,7 +28,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error', 'login-karyawan'],
                         'allow' => true,
                     ],
                     [
@@ -73,12 +74,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index', [
-            'user_count' => Login::find()->count(),
-            'pesawat_count' => Pesawat::find()->count(),
-            'lambung_count' => Lambung::find()->count(),
-            'log_count' => Log::find()->count(),
-        ]);
+        return $this->render('index');
     }
 
     /**
@@ -106,6 +102,31 @@ class SiteController extends Controller
             return $this->goBack();
         } else {
             return $this->render('login', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionLoginKaryawan()
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goBack();
+        }
+
+        $model = new LoginKaryawanForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+
+            $input_log = new Log();
+            $input_log->level = '0';
+            $input_log->category = 'Login';
+            $input_log->log_time = microtime('get_as_float');
+            $input_log->prefix = Yii::$app->user->identity->nama;
+            $input_log->message = 'Login';
+            $input_log->save(false);
+
+            return $this->goBack();
+        } else {
+            return $this->render('login_karyawan', [
                 'model' => $model,
             ]);
         }

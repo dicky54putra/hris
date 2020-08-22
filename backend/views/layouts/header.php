@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use backend\models\Userrole;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -10,7 +11,7 @@ use yii\helpers\Html;
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-    <?= Html::a('<span class="logo-mini"><i class="fa fa-fighter-jet"></i></span><span class="logo-lg">' . Yii::$app->name . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
+    <?= Html::a('<span class="logo-mini">HRIS</span><span class="logo-lg">' . Yii::$app->name . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
 
     <nav class="navbar navbar-static-top" role="navigation">
 
@@ -42,9 +43,15 @@ use yii\helpers\Html;
 
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                            <div class="pull-left">
-                                <a href="index.php?r=login/profile&id=<?= Yii::$app->user->identity->id ?>" class="btn btn-default btn-flat">Profile</a>
-                            </div>
+                            <?php
+                            $role = UserRole::find()->where(["id_login" => Yii::$app->user->id])->andWhere(["id_system_role" => 26])->one();
+                            if ($role) {
+                            } else {
+                            ?>
+                                <div class="pull-left">
+                                    <a href="index.php?r=login/profile&id=<?= Yii::$app->user->identity->id ?>" class="btn btn-default btn-flat">Profile</a>
+                                </div>
+                            <?php } ?>
                             <div class="pull-right">
                                 <?= Html::a(
                                     'Sign out',
