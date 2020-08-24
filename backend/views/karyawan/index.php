@@ -116,7 +116,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'panel' => [
                 'type' => GridView::TYPE_PRIMARY,
                 'heading' => '<h2 class="panel-title"><i class="fa fa-user"></i> Karyawan</h2>',
-                // 'before' => Html::a('<i class="glyphicon glyphicon-plus"></i> Create', ['create'], ['class' => 'btn btn-success']),
+                'before' => Html::a('<i class="glyphicon glyphicon-print"></i> Print', ['data-print'], ['class' => 'btn btn-success', 'target' => '_BLANK']),
             ],
             'persistResize' => false,
             'toggleDataOptions' => ['minCount' => 100],

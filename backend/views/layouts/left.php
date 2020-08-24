@@ -45,11 +45,6 @@
 				$c = 0;
 				//echo "1";
 				foreach ($menu2 as $data2) {
-					// if (Html::encode($this->title == $data2->nama_menu)) {
-					// 	$tle = 'active';
-					// } else {
-					// 	$tle = '';
-					// }
 					array_push($items, array(
 						'label' => $data2->nama_menu,
 						'icon' => $data2->icon,
@@ -73,7 +68,9 @@
 					'icon' => $data->icon,
 					'url' => "index.php?r=" . $data->url,
 					'label' => $data->nama_menu,
-					'options' => ['class' => (Yii::$app->controller->id == $data->url) ? 'active' : '',],
+					'options' => [
+						'class' => (Yii::$app->controller->id == $data->url) ? 'active' : '',
+					],
 				));
 			}
 		}
