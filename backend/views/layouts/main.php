@@ -37,7 +37,7 @@ if (Yii::$app->user->isGuest) {
         <?php $this->head() ?>
     </head>
 
-    <body class="hold-transition skin-blue sidebar-mini">
+    <body class="hold-transition skin-blue sidebar-mini fixed">
         <?php $this->beginBody() ?>
         <div class="wrapper">
 
@@ -61,6 +61,8 @@ if (Yii::$app->user->isGuest) {
 
         <?php $this->endBody() ?>
     </body>
+
+    <script src="https://adminlte.io/themes/AdminLTE/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 
     </html>
     <?php $this->endPage() ?>

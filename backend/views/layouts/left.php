@@ -1,14 +1,26 @@
+<?php
+
+use backend\models\Systemrole;
+use backend\models\Userrole;
+?>
 <aside class="main-sidebar">
 
 	<section class="sidebar">
 
 		<!-- Sidebar user panel -->
-		<div class="user-panel">
+		<div class="user-panel" style="margin-top: 10px;">
 			<div class="pull-left image">
 				<img src="<?= "upload/" . Yii::$app->user->identity->foto ?>" class="img-circle" alt="User Image" />
 			</div>
 			<div class="pull-left info">
-				<p><?= Yii::$app->user->identity->nama ?></p>
+				<p>
+					<?= Yii::$app->user->identity->nama ?>
+				</p>
+				<?php
+				$userrole = Userrole::find()->where(['id_login' => Yii::$app->user->identity->id_login])->one();
+				$level = Systemrole::find()->where(['id_system_role' => $userrole->id_system_role])->one();
+				?>
+				<div style="font-size: 70%;"><?= $level->nama_role ?></div>
 				<?php /* <a href="#"><i class="fa fa-circle text-success"></i> Online</a> */ ?>
 			</div>
 		</div>
