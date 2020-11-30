@@ -46,7 +46,10 @@ return [
         'debug' => [
             'class' => 'yii\debug\Module',
             'allowedIPs' => ['127.0.0.1', '::1']
-        ]
+        ],
+        'utility' => [
+            'class' => 'c006\utility\migration\Module',
+        ],
     ],
     'components' => [
         'request' => [
